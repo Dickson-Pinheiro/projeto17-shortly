@@ -3,7 +3,7 @@ import { db } from "../database/database.js"
 
 export const urlController = {
 
-    async createShotUrl(req, res) {
+    async createShortUrl(req, res) {
         const { url } = req.body
         const { userId } = res.locals
         const shortUrl = nanoid(10);
@@ -12,6 +12,8 @@ export const urlController = {
 
         try {
             await db.query(query, [url, shortUrl, userId])
+            const urlData = await db.query('select id, "shortUrl" from urls where "shortUrl" = $1', [shortUrl])
+            res.status(201).send(urlData.rows[0])
         } catch (error) {
             console.log(error)
             res.status(500).send()
@@ -60,18 +62,16 @@ export const urlController = {
         const { userId } = res.locals
         const { id: urlId } = req.params;
 
-
-
         try {
             const query = 'select "userId" from urls where id=$1;'
             const urlData = await db.query(query, [urlId]);
 
             if (!urlData.rows[0]) {
-                res.status(404).send()
+                return res.status(404).send()
             }
 
-            if (userId !== urlData.rows[0].userI) {
-                res.status(401).send()
+            if (userId !== urlData.rows[0].userId) {
+                return res.status(401).send()
             }
 
             const deleteQuery = 'delete from urls where id=$1;'
