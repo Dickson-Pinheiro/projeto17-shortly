@@ -29,7 +29,8 @@ CREATE TABLE public.urls (
     url text NOT NULL,
     "shortUrl" text NOT NULL,
     "visitCount" integer DEFAULT 0,
-    "userId" integer NOT NULL
+    "userId" integer NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now() NOT NULL
 );
 
 
@@ -61,7 +62,8 @@ CREATE TABLE public.users (
     id integer NOT NULL,
     name text NOT NULL,
     email text NOT NULL,
-    password text NOT NULL
+    password text NOT NULL,
+    "createdAt" timestamp without time zone DEFAULT now()
 );
 
 
@@ -103,36 +105,26 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.urls VALUES (6, 'https://github.com/Dickson-Pinheiro/projeto14-mywallet-back/blob/main/src/controllers/userController.js', 'BxvAJptmmk', 0, 1);
-INSERT INTO public.urls VALUES (7, 'https://github.com/Dickson-Pinheiro/projeto14-mywallet-back/blob/main/src/controllers/userController.js', 'hRWMTsZo-l', 0, 1);
-INSERT INTO public.urls VALUES (9, 'https://github.com/Dickson-Pinheiro/projeto14-mywallet-back/blob/main/src/controllers/userController.js', 'oZVXMe-tGd', 0, 1);
-INSERT INTO public.urls VALUES (10, 'https://github.com/Dickson-Pinheiro/projeto14-mywallet-back/blob/main/src/controllers/userController.js', '4dISUIOiGI', 0, 1);
-INSERT INTO public.urls VALUES (8, 'https://github.com/Dickson-Pinheiro/projeto14-mywallet-back/blob/main/src/controllers/userController.js', 'ov3R2HojAU', 1, 1);
-INSERT INTO public.urls VALUES (11, 'https://www.google.com/search?q=order+by&sxsrf=AJOqlzVo_FwuEyOL7CEyj76GPvgtMIAPTg%3A1677787308028&ei=rAABZMigAZnT1sQPo4uSwAE&oq=order+&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgoIABCxAxCDARBDMgoIABCxAxCDARBDMgsIABCABBCxAxCDATIECAAQQzIFCAAQgAQyBQgAEIAEMgQIABBDMgUIABCABDIFCAAQgAQyBQgAEIAEOgQIIxAnOhEILhCABBCxAxCDARDHARDRAzoRCC4QsQMQgwEQxwEQ0QMQ1AI6CAgAELEDEIMBOgcIIxCxAhAnOhMILhCABBCxAxCDARDHARDRAxAKOgUILhCABDoNCAAQgAQQsQMQgwEQCjoLCC4QgAQQxwEQrwE6BwgAEIAEEAo6CAgAEIAEELEDSgQIQRgAUABYhBBgtxxoAnABeACAAaICiAHfDJIBBTAuNS4zmAEAoAEBwAEB&sclient=gws-wiz-serp', '9Bn4_MmbL8', 1, 2);
-INSERT INTO public.urls VALUES (12, 'https://www.google.com/search?q=order+by&sxsrf=AJOqlzVo_FwuEyOL7CEyj76GPvgtMIAPTg%3A1677787308028&ei=rAABZMigAZnT1sQPo4uSwAE&oq=order+&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAxgAMgoIABCxAxCDARBDMgoIABCxAxCDARBDMgsIABCABBCxAxCDATIECAAQQzIFCAAQgAQyBQgAEIAEMgQIABBDMgUIABCABDIFCAAQgAQyBQgAEIAEOgQIIxAnOhEILhCABBCxAxCDARDHARDRAzoRCC4QsQMQgwEQxwEQ0QMQ1AI6CAgAELEDEIMBOgcIIxCxAhAnOhMILhCABBCxAxCDARDHARDRAxAKOgUILhCABDoNCAAQgAQQsQMQgwEQCjoLCC4QgAQQxwEQrwE6BwgAEIAEEAo6CAgAEIAEELEDSgQIQRgAUABYhBBgtxxoAnABeACAAaICiAHfDJIBBTAuNS4zmAEAoAEBwAEB&sclient=gws-wiz-serp', 'BChI2yB4kJ', 1, 1);
-INSERT INTO public.urls VALUES (13, 'https://www.youtube.com/results?search_query=json+build+objec+postgres', 'MBY96XxiVG', 0, 2);
 
 
 --
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (1, 'Dickson', 'dicksonpinheiro4@gmail.com', '$2b$10$FnBtM8eghFlX11S82JfO7.YNIUXCgQvgld1K77RCbjWBbtRdZhbgS');
-INSERT INTO public.users VALUES (2, 'Dennis', 'dennispinheiro97@gmail.com', '$2b$10$V4nXyejarNTb//IeqdRZYOgyXAL1KR5ZyoZ5iOMgSu8kukNs66ez.');
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 13, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_id_seq', 1, false);
 
 
 --
