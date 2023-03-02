@@ -29,7 +29,7 @@ export const userController = {
     },
 
     getUser(req, res){
-        const {userId} = res.locals.userId
+        const {userId} = res.locals
 
         /* SELECT json_build_object(
             "id", users.id,
