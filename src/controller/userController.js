@@ -48,8 +48,8 @@ export const userController = {
             if (!isCorrectPassword) {
                 res.status(401).send();
             }
-            const token = jwt.sign({ userId }, process.env.SECRET, { expiresIn: "3h" })
-            res.send({ token });
+            const token = jwt.sign({ userId }, "batata", { expiresIn: "3h" })
+            return res.send({ token });
         } catch (error) {
             console.log(error)
             res.status(500).send()
